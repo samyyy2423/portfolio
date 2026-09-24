@@ -1,12 +1,30 @@
-# React + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal site: **[samyaksportfolio.vercel.app](https://samyaksportfolio.vercel.app/)**
 
-Currently, two official plugins are available:
+A single-page, scroll-driven portfolio with a 3D planet in the hero, animated section headers, a
+marquee, and project and services sections.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## Expanding the ESLint configuration
+- React 19 + Vite
+- Tailwind CSS v4
+- GSAP (ScrollTrigger) for scroll and text animations, Lenis for smooth scrolling
+- three.js via React Three Fiber and drei for the `Planet.glb` model
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Structure
+
+```
+src/
+├── sections/      Navbar, Hero, ServiceSummary, Services, About, Works, ContactSummary, Contact
+├── components/    Planet (3D model), AnimatedHeaderSection, AnimatedTextLines, Marquee
+└── constants/     Services and projects content
+```
+
+## Run locally
+
+```bash
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # production build in dist/
+```
