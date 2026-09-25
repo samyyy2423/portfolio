@@ -45,7 +45,7 @@ const ContactSummary = () => {
                     “ Let’s build a <br />
                     <span className="font-normal">memorable</span> &{" "}
                     <span className="italic">inspiring</span> <br />
-                    web application <span className="text-gold">together</span> “
+                    web application <span className="text-gold-deep">together</span> “
                 </p>
             </div>
             <Marquee
@@ -53,7 +53,7 @@ const ContactSummary = () => {
                 reverse={true}
                 className="text-black bg-transparent border-y-2"
                 iconClassName="stroke-gold stroke-2 text-primary"
-                icon="material-symbols-light:square"
+                icon="square"
             />
         </section>
     );

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { socials } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Link } from "react-scroll";
+import { useLenis } from "lenis/react";
 
 const Navbar = () => {
     const navRef = useRef(null);
@@ -14,6 +14,7 @@ const Navbar = () => {
     const iconTl = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
     const [showBurger, setShowBurger] = useState(true);
+    const lenis = useLenis();
     useGSAP(() => {
         gsap.set(navRef.current, { xPercent: 100 });
         gsap.set([linksRef.current, contactRef.current], {
@@ -99,22 +100,25 @@ const Navbar = () => {
         <>
             <nav
                 ref={navRef}
+                aria-label="Main menu"
+                inert={!isOpen}
                 className="fixed z-50 flex flex-col justify-between w-full h-full px-10 uppercase bg-black text-white/80 py-28 gap-y-10 md:w-1/2 md:left-1/2"
             >
                 <div className="flex flex-col text-5xl gap-y-2 md:text-6xl lg:text-8xl">
                     {["home", "services", "about", "work", "contact"].map(
                         (section, index) => (
                             <div key={index} ref={(el) => (linksRef.current[index] = el)}>
-                                <Link
+                                <a
                                     className="transition-all duration-300 cursor-pointer hover:text-white"
-                                    to={`${section}`}
-                                    smooth
-                                    offset={0}
-                                    duration={2000}
-                                    onClick={toggleMenu}
+                                    href={`#${section}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        lenis?.scrollTo(`#${section}`, { duration: 2 });
+                                        toggleMenu();
+                                    }}
                                 >
                                     {section}
-                                </Link>
+                                </a>
                             </div>
                         )
                     )}
@@ -152,7 +156,10 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-            <div
+            <button
+                type="button"
+                aria-label={isOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isOpen}
                 className="fixed z-50 flex flex-col items-center justify-center gap-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10"
                 onClick={toggleMenu}
                 style={
@@ -161,15 +168,15 @@ const Navbar = () => {
                         : { clipPath: "circle(0% at 50% 50%)" }
                 }
             >
-        <span
-            ref={topLineRef}
-            className="block w-8 h-0.5 bg-white rounded-full origin-center"
-        ></span>
+                <span
+                    ref={topLineRef}
+                    className="block w-8 h-0.5 bg-white rounded-full origin-center"
+                ></span>
                 <span
                     ref={bottomLineRef}
                     className="block w-8 h-0.5 bg-white rounded-full origin-center"
                 ></span>
-            </div>
+            </button>
         </>
     );
 };

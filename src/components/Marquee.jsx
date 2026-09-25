@@ -1,13 +1,13 @@
 import React from "react";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Square, StarFourPoints } from "./Icons";
 import gsap from "gsap";
-import { Observer } from "gsap/all";
+import { Observer } from "gsap/Observer";
 import { useEffect, useRef } from "react";
 gsap.registerPlugin(Observer);
 const Marquee = ({
                      items,
                      className = "text-white bg-black",
-                     icon = "mdi:star-four-points",
+                     icon = "star",
                      iconClassName = "",
                      reverse = false,
                  }) => {
@@ -125,7 +125,7 @@ const Marquee = ({
             reversed: reverse,
         });
 
-        Observer.create({
+        const observer = Observer.create({
             onChangeY(self) {
                 let factor = 2.5;
                 if ((!reverse && self.deltaY < 0) || (reverse && self.deltaY > 0)) {
@@ -141,7 +141,10 @@ const Marquee = ({
                     .to(tl, { timeScale: factor / 2.5, duration: 1 }, "+=0.3");
             },
         });
-        return () => tl.kill();
+        return () => {
+            tl.kill();
+            observer.kill();
+        };
     }, [items, reverse]);
     return (
         <div
@@ -155,7 +158,7 @@ const Marquee = ({
                         ref={(el) => (itemsRef.current[index] = el)}
                         className="flex items-center px-16 gap-x-32"
                     >
-            {text} <Icon icon={icon} className={iconClassName} />
+            {text} {icon === "square" ? <Square className={iconClassName} /> : <StarFourPoints className={iconClassName} />}
           </span>
                 ))}
             </div>

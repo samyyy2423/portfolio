@@ -8,9 +8,9 @@ import gsap from "gsap";
 
 
 const Services = () => {
-    const text = `I build secure, high-performance full-stack apps
-    with smooth UX to drive growth 
-    not headaches.`;
+    const text = `I build fast, reliable full-stack products
+    and the benchmarks that keep
+    frontier AI agents honest.`;
     const serviceRefs = useRef([]);
     const isDesktop = useMediaQuery({ minWidth: "48rem" }); //768px
     useGSAP(() => {
@@ -61,7 +61,7 @@ const Services = () => {
                                 {service.items.map((item, itemIndex) => (
                                     <div key={`item-${index}-${itemIndex}`}>
                                         <h3 className="flex">
-                      <span className="mr-12 text-lg text-white/30">
+                      <span className="mr-12 text-lg text-white/60">
                         0{itemIndex + 1}
                       </span>
                                             {item.title}

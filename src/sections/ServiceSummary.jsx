@@ -1,7 +1,7 @@
 import React from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -32,25 +32,25 @@ const ServiceSummary = () => {
     return (
         <section className="mt-20 overflow-hidden font-light leading-snug text-center mb-42 contact-text-responsive">
             <div id="title-service-1">
-                <p>Web Dev</p>
+                <p>AI Evals</p>
             </div>
             <div
                 id="title-service-2"
                 className="flex items-center justify-center gap-3 translate-x-16"
             >
-                <p className="font-normal">Development</p>
+                <p className="font-normal">Benchmarks</p>
                 <div className="w-10 h-1 md:w-32 bg-gold" />
-                <p>Deployment</p>
+                <p>Graders</p>
             </div>
             <div
                 id="title-service-3"
                 className="flex items-center justify-center gap-3 -translate-x-48"
             >
-                <p>Code</p>
+                <p>Frontend</p>
                 <div className="w-10 h-1 md:w-32 bg-gold" />
                 <p className="italic">Full-Stack</p>
                 <div className="w-10 h-1 md:w-32 bg-gold" />
-                <p>Designer</p>
+                <p>Backend</p>
             </div>
         </section>
     );

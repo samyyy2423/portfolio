@@ -1,99 +1,37 @@
 @import "tailwindcss";
 
-/* Amiamie Regular */
+/* Only the three faces the site uses, as WOFF2 (about a third of the TTF size) */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/amiamie/otf/Amiamie-Regular.otf") format("opentype"),
-  url("/fonts/amiamie/ttf/Amiamie-Regular.ttf") format("truetype");
+  src: url("/fonts/amiamie/woff2/Amiamie-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-/* Amiamie Regular Italic */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/amiamie/otf/Amiamie-Italic.otf") format("opentype"),
-  url("/fonts/amiamie/ttf/Amiamie-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Amiamie Light */
-@font-face {
-  font-family: "Amiamie";
-  src: url("/fonts/amiamie/otf/Amiamie-Light.otf") format("opentype"),
-  url("/fonts/amiamie/ttf/Amiamie-Light.ttf") format("truetype");
+  src: url("/fonts/amiamie/woff2/Amiamie-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
-/* Amiamie Light Italic */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/amiamie/otf/Amiamie-LightItalic.otf") format("opentype"),
-  url("/fonts/amiamie/ttf/Amiamie-LightItalic.ttf") format("truetype");
+  src: url("/fonts/amiamie/woff2/Amiamie-LightItalic.woff2") format("woff2");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
 }
 
-/* Amiamie Black */
-@font-face {
-  font-family: "Amiamie";
-  src: url("/fonts/amiamie/otf/Amiamie-Black.otf") format("opentype"),
-  url("/fonts/amiamie/ttf/Amiamie-Black.ttf") format("truetype");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Amiamie Black Italic */
-@font-face {
-  font-family: "Amiamie";
-  src: url("/fonts/amiamie/otf/Amiamie-BlackItalic.otf") format("opentype"),
-  url("/fonts/amiamie/ttf/Amiamie-BlackItalic.ttf") format("truetype");
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Amiamie-Round Variants (if needed separately) */
-@font-face {
-  font-family: "Amiamie-Round";
-  src: url("/fonts/amiamie/otf/Amiamie-RegularRound.otf") format("opentype"),
-  url("/fonts/amiamie/ttf/Amiamie-RegularRound.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Amiamie-Round";
-  src: url("/fonts/amiamie/otf/Amiamie-BlackRound.otf") format("opentype"),
-  url("/fonts/amiamie/ttf/Amiamie-BlackRound.ttf") format("truetype");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Amiamie-Round";
-  src: url("/fonts/amiamie/otf/Amiamie-BlackItalicRound.otf") format("opentype"),
-  url("/fonts/amiamie/ttf/Amiamie-BlackItalicRound.ttf") format("truetype");
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
 @theme {
   --color-primary: #e5e5e0;
   --color-DarkLava: #393632;
   --color-SageGray: #8b8b73;
   --color-gold: #cfa355;
+  --color-gold-deep: #7a5a1f;
   --font-amiamie: "Amiamie", sans-serif;
-  --font-amiamie-round: "Amiamie-Round", sans-serif;
 
   --animate-marquee: marquee 40s infinite linear;
   @keyframes marquee {
@@ -112,6 +50,22 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
   font-family: var(--font-amiamie);
+}
+
+/* phone hero: the still planet drops in and then floats, like the 3D one */
+.planet-still {
+  animation: planet-in 2.4s cubic-bezier(0.16, 1, 0.3, 1) both, planet-float 7s ease-in-out 2.4s infinite;
+}
+@keyframes planet-in {
+  from { transform: translateY(-30%); }
+  to { transform: translateY(0); }
+}
+@keyframes planet-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .planet-still { animation: none; }
 }
 
 @utility clip-path {

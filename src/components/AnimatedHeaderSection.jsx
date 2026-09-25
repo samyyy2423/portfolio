@@ -27,10 +27,12 @@ const AnimatedHeaderSection = ({
             duration: 1,
             ease: "circ.out",
         });
+        // The clip-path wrapper already masks the title while it rises. The hero skips the
+        // opacity fade so the browser can count the title as the page's main content (LCP).
         tl.from(
             headerRef.current,
             {
-                opacity: 0,
+                ...(withScrollTrigger ? { opacity: 0 } : {}),
                 y: "200",
                 duration: 1,
                 ease: "circ.out",

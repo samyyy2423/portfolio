@@ -51,9 +51,13 @@ const About = () => {
             <div className="flex flex-col items-center justify-between gap-16 px-10 pb-16 text-xl font-light tracking-wide lg:flex-row md:text-2xl lg:text-3xl text-white/60">
                 <img
                     ref={imgRef}
-                    src="/images/man.jpg"
-                    alt="Portrait"
-                    className="w-md rounded-3xl"
+                    src="/images/man.webp"
+                    alt="Portrait of Samyak Pudke"
+                    loading="lazy"
+                    decoding="async"
+                    width="900"
+                    height="1125"
+                    className="w-md h-auto rounded-3xl"
                 />
                 <AnimatedTextLines text={aboutText} className={"w-full"} />
             </div>

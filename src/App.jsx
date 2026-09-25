@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { ReactLenis } from "lenis/react";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
-import ReactLenis from "lenis/react";
-import { useProgress } from "@react-three/drei";
 import ServiceSummary from "./sections/ServiceSummary.jsx";
 import Services from "./sections/Services.jsx";
 import About from "./sections/About.jsx";
@@ -10,37 +9,13 @@ import Works from "./sections/Works.jsx";
 import ContactSummary from "./sections/ContactSummary.jsx";
 import Contact from "./sections/Contact.jsx";
 
+// The page renders straight away; the 3D planet loads in the background and
+// drops in when it is ready (see Hero), instead of holding the page behind a loader.
 const App = () => {
-    const { progress } = useProgress();
-    const [isReady, setIsReady] = useState(false);
-
-    useEffect(() => {
-        if (progress === 100) {
-            setIsReady(true);
-        }
-    }, [progress]);
-
     return (
-        <ReactLenis root className="relative w-screen min-h-screen overflow-x-auto">
-            {!isReady && (
-                <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-black text-white transition-opacity duration-700 font-light">
-                    <p className="mb-4 text-xl tracking-widest animate-pulse">
-                        Loading {Math.floor(progress)}%
-                    </p>
-                    <div className="relative h-1 overflow-hidden rounded w-60 bg-white/20">
-                        <div
-                            className="absolute top-0 left-0 h-full transition-all duration-300 bg-white"
-                            style={{ width: `${progress}%` }}
-                        ></div>
-                    </div>
-                </div>
-            )}
-            <div
-                className={`${
-                    isReady ? "opacity-100" : "opacity-0"
-                } transition-opacity duration-1000`}
-            >
-                <Navbar />
+        <ReactLenis root>
+            <Navbar />
+            <main>
                 <Hero />
                 <ServiceSummary />
                 <Services />
@@ -48,7 +23,7 @@ const App = () => {
                 <Works />
                 <ContactSummary />
                 <Contact />
-            </div>
+            </main>
         </ReactLenis>
     );
 };

@@ -1,15 +1,29 @@
-import React from 'react'
-import { Canvas } from "@react-three/fiber";
-import { Planet } from "../components/Planet";
-import { Environment, Float, Lightformer } from "@react-three/drei";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 
+const HeroScene = lazy(() => import("../components/HeroScene"));
+
 const Hero = () => {
-    const isMobile = useMediaQuery({maxWidth: 853});
+    const isMobile = useMediaQuery({ maxWidth: 853 });
+    const [showScene, setShowScene] = useState(false);
     const text = `I help fast moving brands and startups get an
 early advantage through premium
 designs and full web projects.`;
+
+    // Desktop: start the 3D scene once the browser is idle, so text and layout paint first.
+    // Phones get a still render of the same planet instead of shipping three.js at all.
+    useEffect(() => {
+        if (isMobile) return;
+        const start = () => setShowScene(true);
+        if ("requestIdleCallback" in window) {
+            const id = window.requestIdleCallback(start, { timeout: 2000 });
+            return () => window.cancelIdleCallback(id);
+        }
+        const t = setTimeout(start, 800);
+        return () => clearTimeout(t);
+    }, [isMobile]);
+
     return (
         <section id="home" className="flex flex-col justify-end min-h-screen">
             <AnimatedHeaderSection
@@ -20,43 +34,27 @@ designs and full web projects.`;
             />
             <figure
                 className="absolute inset-0 -z-50"
-                style={{width: "100vw", height: "100vh"}}
+                style={{ width: "100vw", height: "100vh" }}
+                aria-hidden="true"
             >
-                <Canvas
-                    shadows
-                    camera={{position: [0, 0, -10], fov: 17.5, near: 1, far: 20}}>
-                    <ambientLight intensity={0.5}/>
-                    <Float speed={0.5}>
-                        <Planet scale={isMobile ? 0.7 : 1}/>
-                    </Float>
-                    <Environment resolution={256}>
-                        <group rotation={[-Math.PI / 3, 4, 1]}>
-                            <Lightformer
-                                form={"circle"}
-                                intensity={2}
-                                position={[0, 5, -9]}
-                                scale={10}
-                            /> <Lightformer
-                            form={"circle"}
-                            intensity={2}
-                            position={[0, 3, 1]}
-                            scale={10}
-                        /> <Lightformer
-                            form={"circle"}
-                            intensity={2}
-                            position={[-5, -1, -1]}
-                            scale={10}
-                        /> <Lightformer
-                            form={"circle"}
-                            intensity={2}
-                            position={[10, 1, 0]}
-                            scale={10}
-                        />
-                        </group>
-                    </Environment>
-                </Canvas>
+                {isMobile ? (
+                    <img
+                        src="/images/planet-mobile.webp"
+                        alt=""
+                        width="780"
+                        height="1688"
+                        fetchPriority="high"
+                        className="planet-still w-full h-full object-cover"
+                    />
+                ) : (
+                    showScene && (
+                        <Suspense fallback={null}>
+                            <HeroScene isMobile={isMobile} />
+                        </Suspense>
+                    )
+                )}
             </figure>
         </section>
-    )
-}
+    );
+};
 export default Hero;

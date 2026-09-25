@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { ArrowUpRight } from "../components/Icons";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { projects } from "../constants";
 import { useRef, useState } from "react";
@@ -136,7 +136,7 @@ const Works = () => {
                             <h2 className="lg:text-[32px] text-[26px] leading-none">
                                 {project.name}
                             </h2>
-                            <Icon icon="lucide:arrow-up-right" className="md:size-6 size-5" />
+                            <ArrowUpRight className="md:size-6 size-5" />
                         </div>
 
                         {/* divider */}
@@ -158,13 +158,21 @@ const Works = () => {
                         <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
                             <img
                                 src={project.bgImage}
-                                alt={`${project.name}-bg-image`}
+                                alt=""
+                                loading="lazy"
+                                decoding="async"
+                                width="900"
+                                height="900"
                                 className="object-cover w-full h-full rounded-md brightness-50"
                             />
                             <img
                                 src={project.image}
-                                alt={`${project.name}-image`}
-                                className="absolute bg-center px-14 rounded-xl"
+                                alt={`${project.name} screenshot`}
+                                loading="lazy"
+                                decoding="async"
+                                width="1200"
+                                height="600"
+                                className="absolute h-auto bg-center px-14 rounded-xl"
                             />
                         </div>
                     </a>
@@ -178,7 +186,8 @@ const Works = () => {
                     {currentIndex !== null && (
                         <img
                             src={projects[currentIndex].image}
-                            alt="preview"
+                            alt=""
+                            decoding="async"
                             className="object-cover w-full h-full"
                         />
                     )}
