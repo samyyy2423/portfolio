@@ -4,15 +4,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
-export const AnimatedTextLines = ({ text, className }) => {
+export const AnimatedTextLines = ({ text, className, fade = true }) => {
     const containerRef = useRef(null);
     const lineRefs = useRef([]);
     const lines = text.split("\n").filter((line) => line.trim() !== "");
     useGSAP(() => {
         if (lineRefs.current.length > 0) {
             gsap.from(lineRefs.current, {
-                y: 100,
-                opacity: 0,
+                y: fade ? 100 : 40,
+                opacity: fade ? 0 : 1,
                 duration: 1,
                 stagger: 0.3,
                 ease: "back.out",

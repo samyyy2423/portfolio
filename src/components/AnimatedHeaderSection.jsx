@@ -22,13 +22,16 @@ const AnimatedHeaderSection = ({
                 }
                 : undefined,
         });
-        tl.from(contextRef.current, {
-            y: "50vh",
-            duration: 1,
-            ease: "circ.out",
-        });
-        // The clip-path wrapper already masks the title while it rises. The hero skips the
-        // opacity fade so the browser can count the title as the page's main content (LCP).
+        // Sections further down rise into place as they scroll in. The hero stays put so its
+        // text is on screen from the first frame (that is what Lighthouse times as LCP).
+        if (withScrollTrigger) {
+            tl.from(contextRef.current, {
+                y: "50vh",
+                duration: 1,
+                ease: "circ.out",
+            });
+        }
+        // The clip-path wrapper already masks the title while it rises, so the hero skips the fade.
         tl.from(
             headerRef.current,
             {
@@ -68,6 +71,7 @@ const AnimatedHeaderSection = ({
                 <div className="py-12 sm:py-16 text-end">
                     <AnimatedTextLines
                         text={text}
+                        fade={withScrollTrigger}
                         className={`font-light uppercase value-text-responsive ${textColor}`}
                     />
                 </div>
