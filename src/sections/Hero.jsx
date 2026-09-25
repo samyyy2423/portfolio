@@ -7,9 +7,9 @@ const HeroScene = lazy(() => import("../components/HeroScene"));
 const Hero = () => {
     const isMobile = useMediaQuery({ maxWidth: 853 });
     const [showScene, setShowScene] = useState(false);
-    const text = `I help fast moving brands and startups get an
-early advantage through premium
-designs and full web projects.`;
+    const text = `5+ years shipping React and Next.js products,
+now building the benchmarks that
+evaluate frontier AI models.`;
 
     // Desktop: start the 3D scene once the browser is idle, so text and layout paint first.
     // Phones get a still render of the same planet instead of shipping three.js at all.
@@ -27,7 +27,7 @@ designs and full web projects.`;
     return (
         <section id="home" className="flex flex-col justify-end min-h-screen">
             <AnimatedHeaderSection
-                subTitle={"Bugs to be never found"}
+                subTitle={"Full-Stack Developer · AI Engineer"}
                 title={"Samyak P"}
                 text={text}
                 textColor={"text-black"}
