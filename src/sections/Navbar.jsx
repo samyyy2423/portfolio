@@ -111,6 +111,7 @@ const Navbar = () => {
                                     smooth
                                     offset={0}
                                     duration={2000}
+                                    onClick={toggleMenu}
                                 >
                                     {section}
                                 </Link>
@@ -124,9 +125,12 @@ const Navbar = () => {
                 >
                     <div className="font-light">
                         <p className="tracking-wider text-white/50">E-mail</p>
-                        <p className="text-xl tracking-widest lowercase text-pretty">
+                        <a
+                            href="mailto:workitsam01@gmail.com"
+                            className="text-xl tracking-widest lowercase text-pretty hover:text-white transition-colors duration-300"
+                        >
                             workitsam01@gmail.com
-                        </p>
+                        </a>
                     </div>
                     <div className="font-light">
                         <p className="tracking-wider text-white/50">Social Media</p>
@@ -135,6 +139,8 @@ const Navbar = () => {
                                 <a
                                     key={index}
                                     href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="text-sm leading-loose tracking-widest uppercase hover:text-white transition-colors duration-300"
                                 >
                                     {"{ "}

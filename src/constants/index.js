@@ -119,7 +119,7 @@ export const projects = [
         name: "Fizzi",
         description:
             "Made with only the best natural ingredients, our soda is free from artificial sweeteners and flavors. It’s a crisp, clean taste that feels as good as it tastes, giving you a boost of real, natural refreshment.",
-        href: "",
+        href: "https://fizzibysamyak.vercel.app/",
         image: "/assets/projects/fizzi.jpg",
         bgImage: "/assets/backgrounds/table.jpg",
         frameworks: [
@@ -132,6 +132,6 @@ export const projects = [
     ];
 
 export const socials = [
-    { name: "LinkedIn", href: "https://www.linkedin.com/in/sammy-pudke" },
-    { name: "GitHub", href: "https://github.com/Samy-rgb" },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/samyakpudke/" },
+    { name: "GitHub", href: "https://github.com/samyyy2423" },
 ];

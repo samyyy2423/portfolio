@@ -6,14 +6,14 @@ import { socials } from "../constants";
 import gsap from "gsap";
 
 const Contact = () => {
-    const text = `Got a question, how or project Idea?
-    WE’D love to hear from you and discus further!`;
+    const text = `Got a question or a project idea?
+    I’d love to hear from you and discuss it further!`;
     const items = [
-        "just imagin, I code",
-        "just imagin, I code",
-        "just imagin, I code",
-        "just imagin, I code",
-        "just imagin, I code",
+        "just imagine, I code",
+        "just imagine, I code",
+        "just imagine, I code",
+        "just imagine, I code",
+        "just imagine, I code",
     ];
     useGSAP(() => {
         gsap.from(".social-link", {
@@ -46,16 +46,22 @@ const Contact = () => {
                         <div className="social-link">
                             <h2>E-mail</h2>
                             <div className="w-full h-px my-2 bg-white/30" />
-                            <p className="text-xl tracking-wider lowercase md:text-2xl lg:text-3xl">
+                            <a
+                                href="mailto:workitsam01@gmail.com"
+                                className="text-xl tracking-wider lowercase md:text-2xl lg:text-3xl hover:text-white/80 transition-colors duration-200"
+                            >
                                 workitsam01@gmail.com
-                            </p>
+                            </a>
                         </div>
                         <div className="social-link">
                             <h2>Phone</h2>
                             <div className="w-full h-px my-2 bg-white/30" />
-                            <p className="text-xl lowercase md:text-2xl lg:text-3xl">
-                                +919699801844
-                            </p>
+                            <a
+                                href="tel:+919699801844"
+                                className="text-xl lowercase md:text-2xl lg:text-3xl hover:text-white/80 transition-colors duration-200"
+                            >
+                                +91 96998 01844
+                            </a>
                         </div>
                         <div className="social-link">
                             <h2>Social Media</h2>
@@ -65,7 +71,9 @@ const Contact = () => {
                                     <a
                                         key={index}
                                         href={social.href}
-                                        className="text-xs leading-loose tracking-wides uppercase md:text-sm hover:text-white/80 transition-colors duration-200"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-xs leading-loose tracking-widest uppercase md:text-sm hover:text-white/80 transition-colors duration-200"
                                     >
                                         {"{ "}
                                         {social.name}

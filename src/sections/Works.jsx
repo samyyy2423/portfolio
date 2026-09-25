@@ -29,7 +29,7 @@ const Works = () => {
             ease: "power3.out",
         });
 
-        gsap.from("#project", {
+        gsap.from(".project", {
             y: 100,
             opacity: 0,
             delay: 0.5,
@@ -37,7 +37,7 @@ const Works = () => {
             stagger: 0.3,
             ease: "back.out",
             scrollTrigger: {
-                trigger: "#project",
+                trigger: ".project",
             },
         });
     }, []);
@@ -116,11 +116,10 @@ const Works = () => {
                 {projects.map((project, index) => (
                     <a
                         key={project.id}
-                        id="project"
                         href={project.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0"
+                        className="project relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0"
                         onMouseEnter={() => handleMouseEnter(index)}
                         onMouseLeave={() => handleMouseLeave(index)}
                     >
@@ -144,7 +143,7 @@ const Works = () => {
                         <div className="w-full h-0.5 bg-black/80" />
 
                         {/* frameworks */}
-                        <div className="flex px-10 text-xs leading-loose uppercase transtion-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
+                        <div className="flex px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
                             {project.frameworks.map((framework) => (
                                 <p
                                     key={framework.id}

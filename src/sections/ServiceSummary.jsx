@@ -10,28 +10,21 @@ const ServiceSummary = () => {
         gsap.to("#title-service-1", {
             xPercent: 20,
             scrollTrigger: {
-                target: "#title-service-1",
+                trigger: "#title-service-1",
                 scrub: true,
             },
         });
         gsap.to("#title-service-2", {
             xPercent: -30,
             scrollTrigger: {
-                target: "#title-service-2",
+                trigger: "#title-service-2",
                 scrub: true,
             },
         });
         gsap.to("#title-service-3", {
             xPercent: 100,
             scrollTrigger: {
-                target: "#title-service-3",
-                scrub: true,
-            },
-        });
-        gsap.to("#title-service-4", {
-            xPercent: -100,
-            scrollTrigger: {
-                target: "#title-service-4",
+                trigger: "#title-service-3",
                 scrub: true,
             },
         });
@@ -58,9 +51,6 @@ const ServiceSummary = () => {
                 <p className="italic">Full-Stack</p>
                 <div className="w-10 h-1 md:w-32 bg-gold" />
                 <p>Designer</p>
-            </div>
-            <div id="title-service-4" className="translate-x-48">
-                <p></p>
             </div>
         </section>
     );

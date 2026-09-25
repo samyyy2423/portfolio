@@ -10,10 +10,10 @@ const About = () => {
     I build scalable, high-performance solutions
     from prototype to production`;
     const aboutText = `Obsessed with building fast, intuitive apps—from pixel-perfect React UIs to bulletproof serverless backends. Every line of code is a promise: quality that users feel.
-  When I’m not screen:
+  When I’m away from the screen:
   ✈️Travelling to craft journeys,
-  🎶🎸Hoping on to music and rocking on instruments,
-  🏈 makes a good part of my day.
+  🎶🎸Hopping onto music and rocking out on instruments,
+  and 🏈 makes up a good part of my day.
   `;
     const imgRef = useRef(null);
     useGSAP(() => {
@@ -42,7 +42,7 @@ const About = () => {
     return (
         <section id="about" className="min-h-screen bg-black rounded-b-4xl">
             <AnimatedHeaderSection
-                subTitle={"Cod with purpose, Built to scale"}
+                subTitle={"Code with purpose, Built to scale"}
                 title={"About"}
                 text={text}
                 textColor={"text-white"}
@@ -51,8 +51,8 @@ const About = () => {
             <div className="flex flex-col items-center justify-between gap-16 px-10 pb-16 text-xl font-light tracking-wide lg:flex-row md:text-2xl lg:text-3xl text-white/60">
                 <img
                     ref={imgRef}
-                    src="images/man.jpg"
-                    alt="man"
+                    src="/images/man.jpg"
+                    alt="Portrait"
                     className="w-md rounded-3xl"
                 />
                 <AnimatedTextLines text={aboutText} className={"w-full"} />
